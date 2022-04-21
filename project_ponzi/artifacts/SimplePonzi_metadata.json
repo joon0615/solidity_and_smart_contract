@@ -1,0 +1,70 @@
+{
+	"compiler": {
+		"version": "0.4.24+commit.e67f0147"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "currentInvestor",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "currentInvestmentAmount",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "fallback"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"project_ponzi/simpleponzi.sol": "SimplePonzi"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"project_ponzi/simpleponzi.sol": {
+			"keccak256": "0xba6995c3b0898b22ad73fa69a2832063ed3f2fbe4ecc4393d3408d721f3f3c29",
+			"urls": [
+				"bzzr://5871e4f4f1d65b7ade3162785b7a8e48c8c2a2f88368064bfc2ccd02beca25fc"
+			]
+		}
+	},
+	"version": 1
+}
