@@ -1,0 +1,111 @@
+{
+	"compiler": {
+		"version": "0.4.24+commit.e67f0147"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "withdraw_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "destroy",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "fallback"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Withdrawal",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Deposit",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"project_faucet/faucet.sol": "Faucet"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"project_faucet/faucet.sol": {
+			"keccak256": "0xf1e9a9b4aec100ae48faf9de5558eaf6875e8f4f0087d3188d10ad12bcf74c69",
+			"urls": [
+				"bzzr://b2ea56260556856b849a72404a14e6990e9b52d156d448282370782a199a3dc9"
+			]
+		},
+		"project_faucet/mortal.sol": {
+			"keccak256": "0x7402e47657ae43c068095fbd1cdc9aceb60fba87071c972b54bbaf51dd48d26f",
+			"urls": [
+				"bzzr://4fd58e9dde5e1c68ac46af44a52e1905b7961bcf2ab6e1ea7f963f3996365a5f"
+			]
+		},
+		"project_faucet/owned.sol": {
+			"keccak256": "0xad84c6c8f8684eac3162628b874385d51cf2c36ff23e3ef72652d27d3e6a978b",
+			"urls": [
+				"bzzr://d0f299c9a957b7a144a4d3878ef189db7f7b8dc63ca7177c64ae4639f6b2678c"
+			]
+		}
+	},
+	"version": 1
+}

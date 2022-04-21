@@ -1,0 +1,52 @@
+{
+	"compiler": {
+		"version": "0.4.24+commit.e67f0147"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "destroy",
+				"outputs": [],
+				"payable": true,
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"project_faucet/mortal.sol": "Mortal"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"project_faucet/mortal.sol": {
+			"keccak256": "0x7402e47657ae43c068095fbd1cdc9aceb60fba87071c972b54bbaf51dd48d26f",
+			"urls": [
+				"bzzr://4fd58e9dde5e1c68ac46af44a52e1905b7961bcf2ab6e1ea7f963f3996365a5f"
+			]
+		},
+		"project_faucet/owned.sol": {
+			"keccak256": "0xad84c6c8f8684eac3162628b874385d51cf2c36ff23e3ef72652d27d3e6a978b",
+			"urls": [
+				"bzzr://d0f299c9a957b7a144a4d3878ef189db7f7b8dc63ca7177c64ae4639f6b2678c"
+			]
+		}
+	},
+	"version": 1
+}
