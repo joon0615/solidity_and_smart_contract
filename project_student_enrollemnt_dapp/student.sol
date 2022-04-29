@@ -13,6 +13,8 @@ contract Student {
         firstName = fName;
         lastName = lName;
         birthDate = bDate;
+
+        emit Added(msg.sender, fName, lName, bDate);
     }
 
     function getStudent () public view returns (
@@ -20,5 +22,13 @@ contract Student {
     ) {
         return (firstName, lastName. birthDate);
     }
+
+    event Added (
+        // declare with `indexed` make the value stroed in `indexed table` which makes event easy to be found
+        address indexed from,
+        string fName,
+        string lName,
+        string bDate
+    );
 
 }
