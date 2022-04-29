@@ -16,7 +16,10 @@ window.addEventListener('load', async () => {
 	// When you deploy the contract with Remix, Ganache will print out the tx log. 
 
 	// [ Creating web3 instance ]
-	web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
+	// ex -1 
+	// web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
+	// ex-2 : Change to erbsocket provider for implementing event for logging
+	web3 = new Web3(new Web3.providers.WebsocketProvider("http://127.0.0.1:8545"));
 	console.log('using web3 provider');
 
 	// [ Getting Account Data and Set Default Account ]
@@ -50,6 +53,30 @@ window.addEventListener('load', async () => {
 				"type": "function"
 			},
 			{
+				// this part is added by implementing event for logging
+				"anonymous": false,
+				"inputs": [
+					{
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"name": "fName",
+						"type": "string"
+					},
+					{
+						"name": "lNmae",
+						"type": "string"
+					},
+					{
+						"name": "bDate",
+						"type": "string"
+					}
+				],
+				"name": "Added",
+				"type": "event"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "getStudent",
@@ -78,6 +105,32 @@ window.addEventListener('load', async () => {
 	// pass ABI and address(from Ganache) for the input
 	// Web3.js makes a connection based on these parameters
 	StudentDetails = new web3.eth.Contract(StudentABI, '0xbf8ff36b51c077a044669c3e1c947664807252f1');
+
+	// Implementing Event and change the displayed value automatically
+	// function(error, event) registers a callback to the event object
+	StudentDetails.events.Added({}, function(error, event) {
+		if(!error) {
+			refresh();
+		}
+		else {
+			console.log(error);
+		}
+	});
+
+	// Get Past Events for the contract
+	// 19th Block to the latest Block
+	StudentDetails.getPastEvents('Added', {fromBlock: 19, toBlock: 'latest'},
+		// can put filter here
+		// {fromBlock: 19, toBlock: 'latest', filter: {from: 'put_address_here'}, }, 
+		function(error, events) {
+			if(!error) {
+				events.forEach(event => console.log(event.returnValues));
+			}
+			else {
+				console.log(error);
+			}
+		}
+	)
 
 	refresh();
 });
