@@ -20,3 +20,25 @@
 .App-link {
   color: #09d3ac;
 }
+
+.Board {
+  border: 10px solid #FFFFFF;
+  padding: 10px;
+  background-color: #D3D3D3;
+}
+
+.Enter {
+  border: 10px solid #FFFFFF;
+  padding: 10px;
+}
+
+button {
+  background-color: #4c6baf;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}

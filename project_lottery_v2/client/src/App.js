@@ -5,7 +5,8 @@ import getWeb3 from "./getWeb3";
 import "./App.css";
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+  state = { manager: 0, players: 0, prize: 0, winner: 0,
+    web3: null, accounts: null, contract: null };
 
   componentDidMount = async () => {
     try {
@@ -36,38 +37,46 @@ class App extends Component {
   };
 
   runExample = async () => {
-    const { accounts, contract } = this.state;
+    const { contract, web3 } = this.state;
 
-    // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({ from: accounts[0] });
+    // Get values from contract
+    const manager = await contract.methods.manager().call();
+    const players = await contract.methods.getPlayers().call();
+    const winner = await contract.methods.winner().call();
+    const prize = await web3.eth.getBalance(contract.opitons.address);
 
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
-
-    // Update state with the result.
-    this.setState({ storageValue: response });
+    // update state
+    this.setState({ manager: manager, players: players, winner: winner, 
+        prize: web3.utils.fromWei(prize, "ether")});
   };
 
   render() {
-    if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
-    }
     return (
       <div className="App">
-        <h1>Good to Go!</h1>
-        <p>Your Truffle Box is installed and ready.</p>
-        <h2>Smart Contract Example</h2>
-        <p>
-          If your contracts compiled and migrated successfully, below will show
-          a stored value of 5 (by default).
+        <h2>May the offs be ever in your favor!</h2>
+        <p className="Board">
+          This content is managed by address {this.state.manager}.
+          There are currently {this.state.players} people entered, 
+          competing to win {this.state.prize} ethers!
+          <br />
+          <br />
+          {this.state.winner} has won the last lottery. 
         </p>
-        <p>
-          Try changing the value stored on <strong>line 42</strong> of App.js.
+        <h2>Want to try your odd?</h2>
+        <p className="Enter">
+          <button onClick={this.handleEnter}> Buy one ticket </button>
+          <br />
+          {this.state.transactionHash}
         </p>
-        <div>The stored value is: {this.state.storageValue}</div>
       </div>
     );
   }
+}
+
+handleEnter = async () => {
+  const {contract, accounts} = this.state;
+  const enter = await contract.methods.enter().send({from: accounts[1], value: '100000000000000000'});
+  this.setState({ transactionHash: enter.transactionHash});
 }
 
 export default App;

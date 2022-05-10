@@ -38,4 +38,8 @@ contract Lottery {
             abi.encodePacked(block.difficulty, block.timestamp, players)
         ));
     }
+
+    function getPlayers() public view returns(uint) {
+        return players.length;
+    }
 }
